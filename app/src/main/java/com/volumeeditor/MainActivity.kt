@@ -22,7 +22,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var floatingToggle: Button
     
     private var maxSystemVolume: Int = 15
-    private val curveExponent = 2.0
+    private var curveExponent = 2.0
+    private lateinit var btnSettings: ImageView
     
     companion object {
         private const val OVERLAY_PERMISSION_CODE = 1001
@@ -40,6 +41,11 @@ class MainActivity : AppCompatActivity() {
         volumeSeekBar = findViewById(R.id.volumeSeekBar)
         volumeText = findViewById(R.id.volumeText)
         floatingToggle = findViewById(R.id.floatingToggle)
+        btnSettings = findViewById(R.id.btnSettings) // We will add this ID to layout later
+        
+        btnSettings.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
 
         // Cấu hình SeekBar với 100 bước
         volumeSeekBar.max = 100
@@ -74,6 +80,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        // Refresh preferences
+        val prefs = getSharedPreferences("app_settings", Context.MODE_PRIVATE)
+        curveExponent = prefs.getFloat("curve_exponent", 2.0f).toDouble()
+        
         // Refresh volume khi quay lại app
         val currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
         val currentPercent = systemToPercent(currentVolume)

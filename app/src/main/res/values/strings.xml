@@ -1,31 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- ... existing strings ... -->
     <string name="app_name">Volume Editor</string>
-    
-    <!-- Presets -->
     <string name="preset_mute">MUTE</string>
     <string name="preset_max">MAX</string>
-    
-    <!-- UI Labels -->
     <string name="label_quick_presets">QUICK PRESETS</string>
     <string name="label_quick_volume">QUICK VOLUME</string>
     <string name="label_float_widget_on">🟢 FLOAT WIDGET</string>
     <string name="label_float_widget_off">🔴 FLOAT WIDGET</string>
     <string name="label_auto_hide_hint">Tự động ẩn sau 5s</string>
-    
-    <!-- Accessibility Descriptions -->
     <string name="desc_close">Close</string>
     <string name="desc_volume_control">Volume Control</string>
-    
-    <!-- Symbols -->
     <string name="symbol_percent">%</string>
     <string name="symbol_minus">−</string>
     <string name="symbol_plus">+</string>
-    
-    <!-- Percentages -->
     <string name="pct_10">10%</string>
     <string name="pct_25">25%</string>
     <string name="pct_50">50%</string>
     <string name="pct_75">75%</string>
     <string name="pct_100">100%</string>
+
+    <!-- Settings Strings -->
+    <string name="title_settings">SETTINGS</string>
+    <string name="label_audio_curve">AUDIO CURVE PROFILE</string>
+    <string name="desc_audio_curve">Controls how volume scales from 0 to 100%</string>
+    <string name="curve_linear">Linear (1.0)</string>
+    <string name="curve_balanced">Balanced (2.0)</string>
+    <string name="curve_deep">Deep (3.0)</string>
+    
+    <string name="label_timeout">QUICK PANEL TIMEOUT</string>
+    <string name="desc_timeout">How long the floating slider stays visible</string>
+    <string name="timeout_3s">3s</string>
+    <string name="timeout_5s">5s</string>
+    <string name="timeout_10s">10s</string>
+    
+    <string name="label_opacity">WIDGET OPACITY</string>
+    <string name="desc_opacity">Adjust transparency of the floating button</string>
+    
+    <string name="desc_back">Back</string>
+    <string name="pct_20">20%</string>
 </resources>

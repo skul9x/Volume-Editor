@@ -30,18 +30,16 @@
    - Lần đầu kích hoạt Nút nổi, bạn cần cấp quyền **"Display over other apps"** (Hiển thị trên ứng dụng khác).
    - Cấp quyền **Notification** (Thông báo) để widget hoạt động ổn định không bị hệ thống tắt.
 
-## 🛠️ Tùy chỉnh nâng cao
+## 🛠️ Tùy chỉnh (Settings)
 
-Bạn có thể chỉnh độ cong của âm lượng trong file `MainActivity.kt`:
+Bấm vào biểu tượng ⚙️ trên màn hình chính để truy cập menu cài đặt chuyên nghiệp:
 
-```kotlin
-// Hệ số quyết định độ cong của biểu đồ âm lượng
-// 1.0 = Tuyến tính (Mặc định)
-// 2.0 = Logarithmic (Khuyên dùng cho Âm thanh)
-// 3.0 = Cong nhiều (Tăng rất chậm ở đoạn đầu)
-// Thay đổi giá trị này để phù hợp với loa của xe bạn
-private val curveExponent = 2.0
-```
+1.  **Audio Curve Profile**:
+    *   **Linear (1.0)**: Tăng đều.
+    *   **Balanced (2.0)**: Cân bằng (Mặc định).
+    *   **Deep (3.0)**: Tăng chậm ở mức nhỏ (cho loa công suất lớn).
+2.  **Quick Panel Timeout**: Thời gian tự ẩn thanh trượt nhanh (3s, 5s, 10s).
+3.  **Widget Opacity**: Chỉnh độ mờ của nút nổi (20% - 100%) để không che khuất màn hình.
 
 ## ⚠️ Yêu cầu hệ thống
 - **Android SDK tối thiểu**: API 21 (Android 5.0 Lollipop)

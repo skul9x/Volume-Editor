@@ -35,7 +35,9 @@ class FloatingService : Service() {
     private val handler = Handler(Looper.getMainLooper())
     
     private var maxSystemVolume: Int = 15
-    private val curveExponent = 2.0
+    private var curveExponent = 2.0
+    private var sliderTimeout = 5000L
+    private var widgetOpacity = 1.0f
     
     // Tracking cho gesture
     private var lastTapTime: Long = 0
@@ -61,6 +63,26 @@ class FloatingService : Service() {
         maxSystemVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
         
         createFloatingButton()
+        refreshSettings()
+    }
+    
+    private fun refreshSettings() {
+        val prefs = getSharedPreferences("app_settings", MODE_PRIVATE)
+        curveExponent = prefs.getFloat("curve_exponent", 2.0f).toDouble()
+        sliderTimeout = prefs.getLong("slider_timeout", 5000L)
+        widgetOpacity = prefs.getFloat("widget_opacity", 1.0f)
+        
+        // Update opacity immediately
+        floatingView?.alpha = widgetOpacity
+    }
+    
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        // Ensure we are in foreground (required if started via startForegroundService)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForeground(NOTIFICATION_ID, createNotification())
+        }
+        refreshSettings() // Reload settings
+        return super.onStartCommand(intent, flags, startId)
     }
     
     private fun createNotificationChannel() {
@@ -117,9 +139,13 @@ class FloatingService : Service() {
             gravity = Gravity.END or Gravity.CENTER_VERTICAL
             x = 20
             y = 0
+            
+            // Apply initial opacity
+            alpha = widgetOpacity // Note: window params alpha vs view alpha. View alpha is safer for complex layouts.
         }
 
         windowManager.addView(floatingView, params)
+        floatingView?.alpha = widgetOpacity // Apply View Alpha
         
         // Setup touch listener cho floating button
         setupFloatingButtonTouch(params)
@@ -282,10 +308,10 @@ class FloatingService : Service() {
         // Setup expanded view
         setupExpandedView()
         
-        // Auto hide sau 5 giây
+        // Auto hide
         handler.postDelayed({
             hideExpandedVolume()
-        }, 5000)
+        }, sliderTimeout)
     }
 
     private fun setupExpandedView() {
@@ -313,7 +339,7 @@ class FloatingService : Service() {
                 // Better approach: just post logic
                 handler.postDelayed({
                     hideExpandedVolume()
-                }, 5000)
+                }, sliderTimeout)
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
