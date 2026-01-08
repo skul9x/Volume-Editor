@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private var maxSystemVolume: Int = 15
     private var curveExponent = 2.0
     private lateinit var btnSettings: LinearLayout
+    private lateinit var btnHome: LinearLayout
     
     companion object {
         private const val OVERLAY_PERMISSION_CODE = 1001
@@ -44,10 +45,16 @@ class MainActivity : AppCompatActivity() {
         volumeSeekBar = findViewById(R.id.volumeSeekBar)
         volumeText = findViewById(R.id.volumeText)
         floatingToggle = findViewById(R.id.floatingToggle)
-        btnSettings = findViewById(R.id.btnSettings) // We will add this ID to layout later
+        btnSettings = findViewById(R.id.btnSettings)
+        btnHome = findViewById(R.id.btnHome)
         
         btnSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
+        }
+        
+        // Home button - minimize app to background
+        btnHome.setOnClickListener {
+            moveTaskToBack(true)
         }
 
         // Cấu hình SeekBar với 100 bước
@@ -83,6 +90,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        applyImmersiveMode() // Failsafe for Android Box
         // Refresh preferences
         val prefs = getSharedPreferences("app_settings", Context.MODE_PRIVATE)
         curveExponent = prefs.getFloat("curve_exponent", 2.0f).toDouble()
@@ -237,5 +245,11 @@ class MainActivity : AppCompatActivity() {
         if (hasFocus) {
             applyImmersiveMode()
         }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        // Minimize app instead of closing - keep running in background
+        moveTaskToBack(true)
     }
 }

@@ -189,6 +189,11 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        applyImmersiveMode()
+    }
+
     private fun updateSdvUiState(enabled: Boolean, statusText: TextView, sensitivityContainer: LinearLayout) {
         if (enabled) {
             statusText.text = getString(R.string.sdv_status_on)

@@ -17,33 +17,73 @@
         android:orientation="vertical"
         android:padding="20dp">
         
-        <!-- Header with Settings Button (Icon + Text) -->
+        <!-- Header Bar with Settings and Home buttons -->
         <LinearLayout
-            android:id="@+id/btnSettings"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="8dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_settings"
-                android:contentDescription="@string/title_settings"/>
+            android:gravity="center_vertical">
             
-            <TextView
+            <!-- Settings Button (Left) -->
+            <LinearLayout
+                android:id="@+id/btnSettings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SETTINGS"
-                android:textColor="@color/text_secondary"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:layout_marginStart="8dp"
-                android:letterSpacing="0.1"/>
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_settings"
+                    android:contentDescription="@string/title_settings"/>
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SETTINGS"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="8dp"
+                    android:letterSpacing="0.1"/>
+            </LinearLayout>
+            
+            <!-- Spacer -->
+            <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+            
+            <!-- Home Button (Right) -->
+            <LinearLayout
+                android:id="@+id/btnHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HOME"
+                    android:textColor="@color/neon_pink"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp"
+                    android:letterSpacing="0.1"/>
+                
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_home"
+                    android:contentDescription="Home"/>
+            </LinearLayout>
         </LinearLayout>
 
         <!-- Volume Percentage Big Text -->

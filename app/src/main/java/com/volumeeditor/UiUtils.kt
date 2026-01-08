@@ -11,6 +11,13 @@ import android.view.WindowInsetsController
  * Critical for automotive head units to use full screen real estate.
  */
 fun Activity.applyImmersiveMode() {
+    // 1. Handle Display Cutout (Notch) - Allow content to extend into cutout area
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        window.attributes.layoutInDisplayCutoutMode = 
+            android.view.WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+    }
+
+    // 2. Hide System Bars
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
         window.insetsController?.let {
             it.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
