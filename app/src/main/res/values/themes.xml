@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.VolumeEditor" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/neon_cyan</item>
+        <item name="colorPrimaryDark">@color/bg_dark_start</item>
+        <item name="colorAccent">@color/neon_pink</item>
+        <item name="android:windowBackground">@color/bg_dark_start</item>
+        <item name="android:statusBarColor">@color/bg_dark_start</item>
+        <item name="android:navigationBarColor">@color/bg_dark_end</item>
+    </style>
+
+    <style name="PresetButtonStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:background">@drawable/btn_modern_ghost</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

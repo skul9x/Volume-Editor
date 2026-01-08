@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Volume Editor</string>
+    
+    <!-- Presets -->
+    <string name="preset_mute">MUTE</string>
+    <string name="preset_max">MAX</string>
+    
+    <!-- UI Labels -->
+    <string name="label_quick_presets">QUICK PRESETS</string>
+    <string name="label_quick_volume">QUICK VOLUME</string>
+    <string name="label_float_widget_on">🟢 FLOAT WIDGET</string>
+    <string name="label_float_widget_off">🔴 FLOAT WIDGET</string>
+    <string name="label_auto_hide_hint">Tự động ẩn sau 5s</string>
+    
+    <!-- Accessibility Descriptions -->
+    <string name="desc_close">Close</string>
+    <string name="desc_volume_control">Volume Control</string>
+    
+    <!-- Symbols -->
+    <string name="symbol_percent">%</string>
+    <string name="symbol_minus">−</string>
+    <string name="symbol_plus">+</string>
+    
+    <!-- Percentages -->
+    <string name="pct_10">10%</string>
+    <string name="pct_25">25%</string>
+    <string name="pct_50">50%</string>
+    <string name="pct_75">75%</string>
+    <string name="pct_100">100%</string>
+</resources>

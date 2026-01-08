@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Backgrounds -->
+    <color name="bg_dark_start">#0F111A</color>
+    <color name="bg_dark_end">#050508</color>
+    <color name="glass_panel">#D9161B2E</color> <!-- 85% opacity dark blue -->
+    <color name="glass_border">#33FFFFFF</color> <!-- 20% opacity white -->
+    
+    <!-- Accents -->
+    <color name="neon_cyan">#00F0FF</color>
+    <color name="neon_cyan_dim">#4D00F0FF</color>
+    <color name="neon_pink">#FF0055</color>
+    <color name="neon_pink_dim">#4DFF0055</color>
+    
+    <!-- Text -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B0B5C6</color>
+    
+    <!-- Functional -->
+    <color name="success">#00FF9D</color>
+    <color name="warning">#FFB800</color>
+</resources>
