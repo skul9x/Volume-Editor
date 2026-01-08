@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/bg_app_gradient"
-    android:padding="0dp">
+    android:orientation="vertical">
 
     <!-- Toolbar -->
     <LinearLayout
@@ -22,13 +22,14 @@
             android:src="@drawable/ic_back"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="4dp"
-            android:contentDescription="@string/desc_back"/>
+            android:contentDescription="@string/desc_back"
+            app:tint="@color/text_primary"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_settings"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:textStyle="bold"
             android:letterSpacing="0.1"
@@ -40,22 +41,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
+        android:fillViewport="true"
         android:padding="24dp">
 
-        <LinearLayout
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:dividerPadding="16dp">
+            android:columnCount="2"
+            android:rowCount="2"
+            android:useDefaultMargins="true"
+            android:alignmentMode="alignMargins">
 
-            <!-- SETTING 1: Audio Curve -->
+            <!-- CARD 1: Audio Curve -->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:minHeight="220dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
                 android:background="@drawable/bg_glass_panel"
-                android:padding="24dp"
-                android:layout_marginBottom="24dp">
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -63,60 +69,75 @@
                     android:text="@string/label_audio_curve"
                     android:textColor="@color/neon_cyan"
                     android:textStyle="bold"
-                    android:letterSpacing="0.05"/>
-                
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/desc_audio_curve"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="12sp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginTop="4dp"/>
+                    android:textSize="14sp"
+                    android:layout_gravity="center_horizontal"/>
+
+                <!-- Visualization placeholder -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/ic_curve_placeholder"/> 
 
                 <RadioGroup
                     android:id="@+id/radioGroupCurve"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
                     
                     <RadioButton
                         android:id="@+id/radioLinear"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="@string/curve_linear"
-                        android:textColor="#FFFFFF"
-                        android:buttonTint="@color/neon_cyan"/>
-                        
+                        android:text="Linear"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:button="@null"
+                        android:drawableTop="@drawable/selector_radio_cyan_dot"
+                        android:drawablePadding="4dp"/>
+
                     <RadioButton
                         android:id="@+id/radioBalanced"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="@string/curve_balanced"
-                        android:textColor="#FFFFFF"
-                        android:buttonTint="@color/neon_cyan"/>
-                        
+                        android:text="Balanced"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:button="@null"
+                        android:drawableTop="@drawable/selector_radio_cyan_dot"
+                        android:drawablePadding="4dp"/>
+
                     <RadioButton
                         android:id="@+id/radioDeep"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="@string/curve_deep"
-                        android:textColor="#FFFFFF"
-                        android:buttonTint="@color/neon_cyan"/>
+                        android:text="Deep"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:button="@null"
+                        android:drawableTop="@drawable/selector_radio_cyan_dot"
+                        android:drawablePadding="4dp"/>
                 </RadioGroup>
             </LinearLayout>
 
-            <!-- SETTING 2: Timeout -->
+            <!-- CARD 2: Timeout -->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:minHeight="220dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
                 android:background="@drawable/bg_glass_panel"
-                android:padding="24dp"
-                android:layout_marginBottom="24dp">
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -124,111 +145,245 @@
                     android:text="@string/label_timeout"
                     android:textColor="@color/neon_pink"
                     android:textStyle="bold"
-                    android:letterSpacing="0.05"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/desc_timeout"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="12sp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginTop="4dp"/>
+                    android:textSize="14sp"
+                    android:layout_gravity="center_horizontal"/>
+                
+                <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:minHeight="20dp"/>
 
                 <RadioGroup
                     android:id="@+id/radioGroupTimeout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
                     <RadioButton
                         android:id="@+id/radio3s"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/timeout_3s"
-                        android:textColor="#FFFFFF"
-                        android:buttonTint="@color/neon_pink"/>
+                        android:layout_marginEnd="24dp"
+                        android:text="3s"
+                        android:textColor="@color/text_secondary"
+                        android:button="@null"
+                        android:drawableTop="@drawable/selector_radio_pink_dot"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"/>
 
                     <RadioButton
                         android:id="@+id/radio5s"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/timeout_5s"
-                        android:textColor="#FFFFFF"
-                        android:buttonTint="@color/neon_pink"/>
+                        android:layout_marginEnd="24dp"
+                        android:text="5s"
+                        android:textColor="@color/text_primary"
+                        android:button="@null"
+                        android:drawableTop="@drawable/selector_radio_pink_dot"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"/>
 
                     <RadioButton
                         android:id="@+id/radio10s"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/timeout_10s"
-                        android:textColor="#FFFFFF"
-                        android:buttonTint="@color/neon_pink"/>
+                        android:text="10s"
+                        android:textColor="@color/text_secondary"
+                        android:button="@null"
+                        android:drawableTop="@drawable/selector_radio_pink_dot"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"/>
                 </RadioGroup>
+                
+                <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:minHeight="20dp"/>
             </LinearLayout>
 
-            <!-- SETTING 3: Opacity -->
+            <!-- CARD 3: Opacity -->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:minHeight="220dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
                 android:background="@drawable/bg_glass_panel"
-                android:padding="24dp">
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/label_opacity"
-                    android:textColor="@color/success"
+                    android:textColor="@color/neon_green"
                     android:textStyle="bold"
-                    android:letterSpacing="0.05"/>
+                    android:textSize="14sp"
+                    android:layout_gravity="center_horizontal"/>
 
+                <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:minHeight="10dp"/>
+                
                 <TextView
+                    android:id="@+id/opacityValueText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/desc_opacity"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="12sp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginTop="4dp"/>
-                
+                    android:text="80%"
+                    android:textColor="@color/text_primary"
+                    android:textSize="24sp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16dp"/>
+
+                <SeekBar
+                    android:id="@+id/opacitySeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="80"
+                    android:progressDrawable="@drawable/seekbar_progress"
+                    android:thumb="@drawable/seekbar_thumb"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:layout_marginTop="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20%"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"/>
+                    <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100%"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+                
+                <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:minHeight="10dp"/>
+            </LinearLayout>
+
+            <!-- CARD 4: SDV -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="220dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_glass_panel"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_sdv"
+                    android:textColor="@color/neon_gold"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_gravity="center_horizontal"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp">
                     
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/pct_20"
-                        android:textColor="#FFFFFF"/>
+                        android:text="Enable SDV"
+                        android:textColor="@color/text_primary"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical|start"/>
 
-                    <SeekBar
-                        android:id="@+id/opacitySeekBar"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:max="100"
-                        android:progress="80"
-                        android:progressDrawable="@drawable/seekbar_progress"
-                        android:thumb="@drawable/seekbar_thumb"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"/>
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/pct_100"
-                        android:textColor="#FFFFFF"/>
+                        android:orientation="vertical"
+                        android:gravity="end"
+                        android:layout_gravity="center_vertical|end">
+                        
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/sdvToggle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:thumbTint="@color/neon_gold"
+                            android:trackTint="#555555"/>
+                            
+                        <TextView
+                            android:id="@+id/sdvStatusText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="● Active"
+                            android:textSize="10sp"
+                            android:textColor="@color/success"/>
+                    </LinearLayout>
+                </FrameLayout>
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sensitivity"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:id="@+id/sdvSensitivityContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupSdvSensitivity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <RadioButton
+                            android:id="@+id/radioSdvLow"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Low\n(30km/h)"
+                            android:gravity="center"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="10sp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/selector_radio_gold_dot"
+                            android:drawablePadding="4dp"/>
+
+                        <RadioButton
+                            android:id="@+id/radioSdvMid"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Mid\n(20km/h)"
+                            android:gravity="center"
+                            android:textColor="@color/text_primary"
+                            android:textSize="10sp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/selector_radio_gold_dot"
+                            android:drawablePadding="4dp"/>
+
+                        <RadioButton
+                            android:id="@+id/radioSdvHigh"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="High\n(10km/h)"
+                            android:gravity="center"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="10sp"
+                            android:button="@null"
+                            android:drawableTop="@drawable/selector_radio_gold_dot"
+                            android:drawablePadding="4dp"/>
+                    </RadioGroup>
                 </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+        </GridLayout>
     </ScrollView>
-
 </LinearLayout>

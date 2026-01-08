@@ -39,4 +39,16 @@
     
     <string name="desc_back">Back</string>
     <string name="pct_20">20%</string>
+    
+    <!-- SDV (Speed-Dependent Volume) Strings -->
+    <string name="label_sdv">SPEED-DEPENDENT VOLUME</string>
+    <string name="desc_sdv">Tự động điều chỉnh âm lượng theo tốc độ xe (GPS)</string>
+    <string name="label_sdv_toggle">Enable SDV</string>
+    <string name="label_sdv_sensitivity">Sensitivity</string>
+    <string name="sdv_low">Low (30km/h)</string>
+    <string name="sdv_mid">Mid (20km/h)</string>
+    <string name="sdv_high">High (10km/h)</string>
+    <string name="sdv_status_on">🟢 SDV Active</string>
+    <string name="sdv_status_off">⚫ SDV Inactive</string>
+    <string name="sdv_permission_required">Cần quyền Location để sử dụng SDV</string>
 </resources>

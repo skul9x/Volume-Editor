@@ -8,7 +8,12 @@
     <!-- Permission for foreground service -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    
+    <!-- Permission for GPS Location (SDV feature) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -42,6 +47,12 @@
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="volume_control_overlay"/>
         </service>
+        
+        <!-- Speed-Dependent Volume Service -->
+        <service
+            android:name=".SpeedVolumeService"
+            android:exported="false"
+            android:foregroundServiceType="location"/>
         
     </application>
 

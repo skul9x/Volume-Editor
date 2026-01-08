@@ -64,6 +64,32 @@ class FloatingService : Service() {
         
         createFloatingButton()
         refreshSettings()
+        
+        // Register Broadcast Receiver for realtime settings updates
+        val filter = android.content.IntentFilter().apply {
+            addAction("com.volumeeditor.UPDATE_OPACITY")
+            addAction("com.volumeeditor.UPDATE_SETTINGS")
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(settingsReceiver, filter, RECEIVER_NOT_EXPORTED)
+        } else {
+            registerReceiver(settingsReceiver, filter)
+        }
+    }
+    
+    private val settingsReceiver = object : android.content.BroadcastReceiver() {
+        override fun onReceive(context: android.content.Context?, intent: Intent?) {
+            when (intent?.action) {
+                "com.volumeeditor.UPDATE_OPACITY" -> {
+                    val opacity = intent.getFloatExtra("opacity", 1.0f)
+                    widgetOpacity = opacity
+                    floatingView?.alpha = widgetOpacity
+                }
+                "com.volumeeditor.UPDATE_SETTINGS" -> {
+                    refreshSettings()
+                }
+            }
+        }
     }
     
     private fun refreshSettings() {
@@ -401,6 +427,11 @@ class FloatingService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
+        try {
+            unregisterReceiver(settingsReceiver)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         handler.removeCallbacksAndMessages(null)
         floatingView?.let { windowManager.removeView(it) }
         expandedView?.let { windowManager.removeView(it) }

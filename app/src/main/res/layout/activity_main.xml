@@ -2,193 +2,258 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:gravity="center"
-    android:padding="16dp"
     android:background="@drawable/bg_app_gradient"
+    android:orientation="horizontal"
+    android:padding="16dp"
     android:baselineAligned="false">
 
-    <!-- LEFT PANEL - Volume Control -->
+    <!-- LEFT PANEL: Volume Display & Slider (60% width) -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.8"
-        android:orientation="vertical"
-        android:gravity="center"
+        android:layout_weight="0.6"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/bg_glass_panel"
-        android:padding="24dp"
-        android:layout_marginEnd="16dp">
-
-        <!-- Volume Display -->
-        <TextView
-            android:id="@+id/volumeText"
+        android:orientation="vertical"
+        android:padding="20dp">
+        
+        <!-- Header with Settings Button (Icon + Text) -->
+        <LinearLayout
+            android:id="@+id/btnSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pct_50"
-            android:textSize="80sp"
-            android:textColor="@color/neon_cyan"
-            android:textStyle="bold"
-            android:shadowColor="@color/neon_cyan_dim"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="16"/>
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
-        <!-- Slider Âm lượng -->
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_settings"
+                android:contentDescription="@string/title_settings"/>
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SETTINGS"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginStart="8dp"
+                android:letterSpacing="0.1"/>
+        </LinearLayout>
+
+        <!-- Volume Percentage Big Text -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            
+            <TextView
+                android:id="@+id/volumeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
+                android:text="50%"
+                android:textColor="@color/neon_cyan"
+                android:textSize="80sp"
+                android:shadowColor="@color/neon_cyan_glow"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="20"/>
+        </FrameLayout>
+
+        <!-- Slider -->
         <SeekBar
             android:id="@+id/volumeSeekBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:max="100"
             android:progress="50"
             android:progressDrawable="@drawable/seekbar_progress"
             android:thumb="@drawable/seekbar_thumb"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
             android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:splitTrack="false"
-            android:minHeight="48dp"/>
-
-        <!-- Control Buttons -->
+            android:paddingEnd="16dp"/>
+            
+        <!-- Min/Max indicators -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnMinus"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:text="@string/symbol_minus"
-                android:textSize="48sp"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/btn_modern_accent"
-                android:layout_marginEnd="32dp"
-                android:stateListAnimator="@null"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnPlus"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:text="@string/symbol_plus"
-                android:textSize="48sp"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/btn_modern_primary"
-                android:stateListAnimator="@null"/>
-
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="8dp">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/preset_mute"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+                
+            <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/preset_max"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
         </LinearLayout>
 
     </LinearLayout>
 
-    <!-- RIGHT PANEL - Presets & Settings -->
+    <!-- RIGHT PANEL: Controls (40% width) -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.2"
-        android:orientation="vertical"
-        android:gravity="center"
+        android:layout_weight="0.4"
         android:background="@drawable/bg_glass_panel"
+        android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Header with Settings -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="16dp">
-            
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_quick_presets"
-                android:textSize="14sp"
-                android:textColor="@color/text_secondary"
-                android:letterSpacing="0.2"
-                android:textStyle="bold"/>
-                
-            <ImageView
-                android:id="@+id/btnSettings"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_settings"
-                android:padding="6dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Settings"/>
-        </LinearLayout>
+            android:text="@string/label_quick_presets"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:letterSpacing="0.1"
+            android:layout_marginBottom="12dp"
+            android:layout_gravity="center_horizontal"/>
 
-        <!-- Preset Grid -->
+        <!-- Manual Grid using Nested LinearLayouts for Stability -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <!-- Row 1 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+                
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn0"
-                    style="@style/PresetButtonStyle"
-                    android:text="@string/preset_mute"/>
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/btn_modern_primary"
+                    android:text="@string/preset_mute"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"/>
+
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn10"
-                    style="@style/PresetButtonStyle"
-                    android:text="@string/pct_10"/>
+                    android:id="@+id/btn25"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/btn_modern_primary"
+                    android:text="@string/pct_25"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textAllCaps="false"/>
             </LinearLayout>
 
             <!-- Row 2 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn25"
-                    style="@style/PresetButtonStyle"
-                    android:text="@string/pct_25"/>
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn50"
-                    style="@style/PresetButtonStyle"
-                    android:text="@string/pct_50"/>
-            </LinearLayout>
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/btn_modern_primary"
+                    android:text="@string/pct_50"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textAllCaps="false"/>
 
-            <!-- Row 3 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn75"
-                    style="@style/PresetButtonStyle"
-                    android:text="@string/pct_75"/>
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/btn_modern_primary"
+                    android:text="@string/pct_75"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textAllCaps="false"/>
+            </LinearLayout>
+
+            <!-- Row 3: Minus/Plus -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn100"
-                    style="@style/PresetButtonStyle"
-                    android:text="@string/preset_max"/>
+                    android:id="@+id/btnMinus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/btn_modern_primary"
+                    android:text="@string/symbol_minus"
+                    android:textColor="@color/neon_pink"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPlus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/btn_modern_primary"
+                    android:text="@string/symbol_plus"
+                    android:textColor="@color/neon_cyan"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"/>
             </LinearLayout>
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <!-- Floating Toggle -->
+        <!-- Floating Service Toggle -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/floatingToggle"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="@string/label_float_widget_on"
-            android:textSize="14sp"
-            android:textColor="@color/neon_cyan"
-            android:textStyle="bold"
-            android:background="@drawable/btn_modern_ghost"
-            android:stateListAnimator="@null"/>
+            android:layout_height="40dp"
+            android:background="@drawable/bg_glass_panel"
+            android:text="@string/label_float_widget_off"
+            android:textColor="@color/neon_green"
+            android:textSize="12sp"
+            android:textAllCaps="false"
+            android:layout_marginTop="4dp"/>
+            
+         <!-- Hidden buttons for compilation compatibility -->
+        <Button android:id="@+id/btn10" android:visibility="gone" android:layout_width="0dp" android:layout_height="0dp" />
+        <Button android:id="@+id/btn100" android:visibility="gone" android:layout_width="0dp" android:layout_height="0dp" />
 
     </LinearLayout>
-
 </LinearLayout>

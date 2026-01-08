@@ -1,5 +1,6 @@
 package com.volumeeditor
 
+import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
 import android.net.Uri
@@ -7,6 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     
     private var maxSystemVolume: Int = 15
     private var curveExponent = 2.0
-    private lateinit var btnSettings: ImageView
+    private lateinit var btnSettings: LinearLayout
     
     companion object {
         private const val OVERLAY_PERMISSION_CODE = 1001
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        applyImmersiveMode()
 
         // Khởi tạo AudioManager
         audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
@@ -227,5 +230,12 @@ class MainActivity : AppCompatActivity() {
         volumeSeekBar.progress = percent
         setVolumePercent(percent)
         updateVolumeText(percent)
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus) {
+            applyImmersiveMode()
+        }
     }
 }

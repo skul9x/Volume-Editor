@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Backgrounds -->
-    <color name="bg_dark_start">#0F111A</color>
-    <color name="bg_dark_end">#050508</color>
-    <color name="glass_panel">#D9161B2E</color> <!-- 85% opacity dark blue -->
-    <color name="glass_border">#33FFFFFF</color> <!-- 20% opacity white -->
+    <!-- Modern Dark Scheme -->
+    <color name="bg_screen">#050508</color>
+    <color name="bg_panel">#151725</color>
+    <color name="bg_panel_stroke">#334555</color>
     
-    <!-- Accents -->
-    <color name="neon_cyan">#00F0FF</color>
-    <color name="neon_cyan_dim">#4D00F0FF</color>
-    <color name="neon_pink">#FF0055</color>
-    <color name="neon_pink_dim">#4DFF0055</color>
+    <!-- Neon Accents -->
+    <color name="neon_cyan">#00E5FF</color>
+    <color name="neon_cyan_glow">#4D00E5FF</color>
+    <color name="neon_cyan_dim">#4D00E5FF</color> <!-- Legacy support -->
+    <color name="neon_pink">#FF2E93</color>
+    <color name="neon_pink_glow">#4DFF2E93</color>
+    <color name="neon_gold">#FFD700</color>
+    <color name="neon_gold_glow">#4DFFD700</color>
+    <color name="neon_green">#00E676</color>
     
     <!-- Text -->
     <color name="text_primary">#FFFFFF</color>
-    <color name="text_secondary">#B0B5C6</color>
+    <color name="text_secondary">#8F9BB3</color>
+    <color name="text_disabled">#485266</color>
+    
+    <!-- Glassmorphism -->
+    <color name="glass_surface">#CC12141F</color>
+    <color name="glass_highlight">#1AFFFFFF</color>
     
     <!-- Functional -->
+    <color name="btn_normal">#23263A</color>
+    <color name="btn_pressed">#353952</color>
+    
+    <!-- Backgrounds (compat) -->
+    <color name="bg_dark_start">#0F111A</color>
+    <color name="bg_dark_end">#050508</color>
+    <color name="background_dark">#0F111A</color>
+    <color name="glass_panel_legacy">#D9161B2E</color>
+    <color name="glass_border">#33FFFFFF</color>
     <color name="success">#00FF9D</color>
     <color name="warning">#FFB800</color>
 </resources>
